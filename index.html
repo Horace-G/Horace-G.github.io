@@ -1,107 +1,152 @@
-<!doctype html>
 <html>
-<head>
- <title>Currículum Horatio</title>
+ <head>
+ <title>Javascript Game</title>
+ 
  <meta charset="utf-8" />
  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <meta name="description" content="A jouney of a thousand miles begins with a 
-single step." />
+ 
+ 
+ </head>
+<body align=center id="background">
+ 
+ <div>
+ <img id="image" src="images/template.jpg" height=200px width=200px/>
+ </div>
+ 
+ <div class="top">
+  Son dos palabras, sin espacio entre ellas.
+  Tamaño de la palabra: (8 letras)
+  </div>
+  <div id="word" class="wrd">
+  - - - - - - - -
+  </div>
+  
+  <hr/>
 
-<body style="background-color:lavender">
+  <div id= "instructions">
+  <em>Ingrese una letra</em>:
+  <input id=input type=text placeholder="Tu letra va aquí"></input>
+  <button id=button>Adivinar!</button>
+  </div>
+  
+  <script>
+	var initialWord = "_ _ _ _ _ _ _";
+  var finalWord = "tequiero";
+  var letters = /^[A-Za-z]+$/;
+  var userSubmit="";
+  var userWord=["-","-","-","-","-","-","-","-"];
+  var success=0;
+  var fail=true;
+  var lives=5;
+  var hits=0;
+  
+  
+  document.getElementById("button").onclick=function(){
+  
+    userSubmit=document.getElementById("input").value;
+	userSubmit=userSubmit.toLowerCase();
+ 
+	console.log(userSubmit.length);
+	if(userSubmit.length!=1){
+		alert("Error!, Solo puedes ingresar una letra!");
+	}
 
-</head>
-<body>
-
-	<a name="top"/>
-
-	<h1 align=center style="color:blue"><strong><u><em>Currículum</em></u></strong></h1>
-
-	<img src="images\20141015_193847.jpg" align="center" height="250" width="200"> </img>
-
-	<h2> <u><strong><em>Datos Personales</em></strong></u></h2>
-	<div style="color:gray">
-		<ul>
-			<li><strong>Nombre Completo:</strong> Horacio Enrique Galdámez Tinoco. </li>
-			<li><strong>Edad:</strong> 19 años.
-			<li><strong>Estado Civil:</strong> Soltero.
-			<li><strong>Correo Electrónico:</strong> horacio[dot]galdamez[at]unitec[dot]edu
-			<li><strong>Idiomas:</strong>
-			<ul>
-				<li>Español</li>
-				<li>Inglés</li>
-				<li>Francés</li>
-			</ul>
-		</ul>
-	<hr>
-	</div>
+	for(j=0;j<finalWord.length;j++){
+		if(userSubmit[0]==finalWord[j]){
+			fail=false;
+			break;
+	}else{
+		fail=true;
+	}
+	}
 	
-		<p align=left>	En el ámbito profesional, me comporto como alguien a la altura, 
-		dispuesto a recibir retos, y verlos como tales, no como problemas, y 
-		hacer algo al respecto. Para realizar tareas, mi esfuerzo por buscar 
-		soluciones en caso de no conocerlas está garantizado.<br/> </p>
-		<p align=left>Soy un persona 
-		que siempre apunta a ser mejor con el tiempo, que entiende que nunca 
-		que sabe todo, pero que entiende que con trabajo y disciplina, el éxito 
-		sólo es cuestión de tiempo. Siempre estoy dispuesto a trabajar en equipo, 
-		estando siempre dispuesto a escuchar las propuestas de mis compañeros y en 
-		base a todas las opciones posibles, ofrecer la mejor solución.<br/> Me considero 
-		un líder, pero no me creo tal porque creo saberlo todo, o me creo superior, 
-		me considero un líder porque entiendo que para ser un ejemplo,  debo enseñar 
-		a mis compañeros y a la vez aprender de ellos, y en vez de ordenar y observar, 
-		debo respetar, escuchar, y decidir, para en conjunto, llegar a una idea que todos
-		apreciemos y encontremos placer en la cual trabajar, todo esto sin creerme en ningún 
-		momento superior o inferior.</p>
-
-		<p align=left>He aprendido que el verdadero éxito recae en 
-		hacer aquello de amamos, incluyendo nuestra carrera profesional. 
-		Al amar lo que hacemos, ya no lo vemos como un deber, sino como un 
-		placer, y nunca como un trabajo. Al amar lo que hago, no tendré problema 
-		alguno para afrontar retos y probar nuevos entornos. No soy el mejor en mi 
-		área de trabajo, pero tengo la seguridad que tengo la pasión necesaria para
-		poco a poco, acercarme más a ésa posición.</p>
-	
-	<hr>
-	
-	<h2><u><strong><em>Estudios Realizados</u></strong></em></h2>
-	<ul>
-		<li><em><u><strong>Educación Primaria</strong></u></em><br /> (1ero a 6to grado) en La Estancia School. (2002-2006)</li>
-		<li><em><u><strong>Educación Secundaria</strong></u></em><br /> (7mo-11vo grado) en <a href="http://laestanciaschool.edu.hn/home.php" ><em>La Estancia School.</a>(2008-2012)
-		<br /><u><em>Titulo Obtenido: </em></u> <em>Bachiller en Ciencias y Letras</em></em></li>
-		<li><em><u><strong>Eduación Superior</strong></u></em><br /> Ingeniería en Sistemas de Computacionales <a href="http://www.unitec.edu/" /><em>UNITEC</em><a/> (2012 a la fecha).
-		<li>Cursos Recibidos:</li>
+	console.log(fail);
+	if(fail==true){
+		if(lives>=1){
+		lives-=1;
+		alert("Letra incorrecta! , te quedan "+lives+" vidas");
 		
-		<table>
-			<tr><th style="color:blue">Nombre del Curso</th><th style="color:blue">Institución</th></tr>
-			<tr><td align=center>Curso de Francés</td><td align=center>Academia Europea</td></tr>
-			<tr><td align=center>Taller de Armado de Computadoras</td><td align=center>UNITEC</td></tr>
-			<tr><td align=center>Taller de Github</td><td align=center>UNITEC</td></tr>
-			<tr><td align=center>Taller de Programación de Videojuegos</td><td align=center>UNITEC</td></tr>
-		</table>
-	</ul>
-	<hr>
+		switch (lives){
+		case 4:
+		changeImage("./images/head.jpg");
+		console.log(document.getElementById("image").src);
+		break;
+		case 3:
+		changeImage("./images/leftarm.jpg");
+		console.log(document.getElementById("image").src);
+		break;
+		case 2:
+		changeImage("./images/botharms.jpg");
+		console.log(document.getElementById("image").src);
+		break;
+		case 1:
+		changeImage("./images/leftleg.jpg");
+		console.log(document.getElementById("image").src);
+		break;
+		}
+		
+		document.getElementById("input").value="";
+		}
+		
+		if(lives==0){
+			changeImage("./images/complete.jpg");
+			alert("Has perdido! :(")
+			document.getElementById("button").disabled=true;
+		}
+		
+		fail=false;
+	}
 
-	<h2><u><strong><em>Experiencia Laboral</em></strong></u></h2>
-	<ul>
-		<li>Traducciones, Bufete Galdámez y Asociados</li>
-		<li>Desarrollo de Aplicaciones para <a href="http://empowermentteam.net/solutions/"><em>Empowerment Team</em></a></li>
-	</ul>
+	if(userSubmit.length==1)
+	if(userSubmit[0].match(letters)){
+		for(i=0;i<finalWord.length;i++)
+			if(userSubmit[0]==finalWord[i]){
+				userWord.splice(i,1,userSubmit[0]);
+				success++;
+				hits++;
+				if(success==1){
+					alert("Correcto!");
+					success=0;
+				}
+				console.log(userWord);
+				document.getElementById("word").innerHTML=userWord;
+				document.getElementById("input").value="";
 
-	<hr>
+			}
+			
+			if (hits==8){
+			 alert("TE QUIERO!!!");
+			 changeImage("./images/success.jpg");
+			 document.getElementById("button").disabled=true;
+			}
 	
-	<h2><u><strong><em>Pasatiempos</em></strong></u></h2>
-	<ul style=square>
-		<li>Leer</li>
-		<li>Investigar y Conocer de la tecnología mas reciente</li>
-		<li>Jugar videojuegos</li>
-		<li>Salir con Amigos</li>
-		<li>Jugar Tenis</li>
-		<li>Estudiar variados cursos en línea</li>
-		<li>Compartir tiempo con mi familia</li>
-	</ul>
-
-	<p><a href="#top"> <em>Regresar al inicio de página</em></p>
-	
-</body>
+	}
+  
+  
+  }
+  
+  function changeImage(x){
+   document.getElementById("image").src=x;
+   }
+  
+  </script>
+ 
+ <style>
+ #background{
+ background:#D0FA58;
+ }
+ 
+ .wrd{
+ font-size:140px;
+ color:#00BFFF;
+ }
+ 
+ .top{
+ margin-top:40px;
+ font-size:30px;
+ }
+ </style>
+ 
+ </body>
 </html>
